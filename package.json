@@ -1,7 +1,7 @@
 {
   "name": "lezer-css",
   "version": "0.13.0",
-  "description": "lezer-based CSS grammar",
+  "description": "lezer-based Java Properties grammar",
   "main": "dist/index.cjs",
   "type": "module",
   "exports": {
@@ -22,12 +22,12 @@
     "lezer": "^0.12.0"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/lezer-parser/css.git"
+    "type": "git",
+    "url": "https://github.com/lezer-parser/properties.git"
   },
   "scripts": {
-    "build": "lezer-generator src/css.grammar -o src/parser && rollup -c",
-    "build-debug": "lezer-generator src/css.grammar --names -o src/parser && rollup -c",
+    "build": "lezer-generator src/properties.grammar -o src/parser.js && rollup -c",
+    "build-debug": "lezer-generator src/properties.grammar --names -o src/parser.js && rollup -c",
     "prepare": "npm run build",
     "test": "mocha test/test-*.js"
   }

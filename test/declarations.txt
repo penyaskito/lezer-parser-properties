@@ -27,19 +27,6 @@ StyleSheet(RuleSet(TagSelector(TagName),Block(
     NumberLiteral(Unit),NumberLiteral(Unit),NumberLiteral(Unit),NumberLiteral(Unit),
     NumberLiteral(Unit),NumberLiteral(Unit),NumberLiteral(Unit),NumberLiteral(Unit)))))))
 
-# Color literals
-
-a {
-  b: #fafd04;
-  c: #fafd0401;
-}
-
-==>
-
-StyleSheet(RuleSet(TagSelector(TagName),Block(
-  Declaration(PropertyName,ColorLiteral),
-  Declaration(PropertyName,ColorLiteral))))
-
 # Numbers
 
 a {

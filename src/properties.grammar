@@ -1,0 +1,50 @@
+@precedence {
+  attribute @left,
+  structure @left,
+  valueOp @left
+}
+
+@skip { whitespace | Comment }
+
+@top Properties { Declaration+ }
+
+NumberLiteral {
+  numberLiteralInner
+}
+
+Declaration {
+  identifier ":" value
+}
+
+@external tokens identifiers from "./tokens" {
+  identifier
+}
+
+value {
+  NumberLiteral |
+  StringLiteral
+}
+
+@tokens {
+  whitespace { std.whitespace+ }
+  
+  Comment { "/*" commentRest }
+  
+  commentRest { ![*] commentRest | "*" commentAfterStar }
+  
+  commentAfterStar { "/" | "*" commentAfterStar | ![/*] commentRest }
+  
+  @precedence { whitespace, Comment }
+  
+  numberLiteralInner { ("+" | "-")? (std.digit+ ("." std.digit*)? | "." std.digit+) (("e" | "E") ("+" | "-")? std.digit+)? }
+
+  StringLiteral { "\"" (!["\n\\] | "\\" _)* "\"" | "'" (!['\n\\] | "\\" _)* "'" }
+
+  "#"
+
+  ":" "::" ";" ","
+
+  "(" ")" "[" "]" "{" "}"
+}
+
+@detectDelim
