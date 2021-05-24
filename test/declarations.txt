@@ -31,3 +31,19 @@ property:value
 
 Properties(Declaration)
 
+# Multiple declarations
+
+a = b
+c = d
+
+==>
+
+Properties(Declaration, Declaration)
+
+# Dotted key
+
+a.b = x
+
+==> 
+
+Properties(Declaration)
