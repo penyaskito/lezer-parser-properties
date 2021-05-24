@@ -13,7 +13,7 @@ NumberLiteral {
 }
 
 Declaration {
-  identifier ":" value
+  propertyName assignation value
 }
 
 @external tokens identifiers from "./tokens" {
@@ -21,18 +21,22 @@ Declaration {
 }
 
 value {
-  NumberLiteral |
+  identifier |
   StringLiteral
+}
+
+propertyName { 
+  identifier ("." identifier)? 
 }
 
 @tokens {
   whitespace { std.whitespace+ }
-  
-  Comment { "/*" commentRest }
-  
-  commentRest { ![*] commentRest | "*" commentAfterStar }
-  
-  commentAfterStar { "/" | "*" commentAfterStar | ![/*] commentRest }
+
+  assignation { ":" | "=" } 
+ 
+  Comment { "#" | "!" commentRest }
+
+  commentRest { ![*] commentRest }
   
   @precedence { whitespace, Comment }
   
@@ -48,3 +52,4 @@ value {
 }
 
 @detectDelim
+

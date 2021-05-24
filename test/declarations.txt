@@ -1,16 +1,33 @@
 # Simple declaration with equals
 
-a=b
+property=value
 
 ==>
 
-Properties(Declaration(identifier,value))
+Properties(Declaration)
+
+# Simple declaration with equals with spaces
+
+property = value
+
+==>
+
+Properties(Declaration)
 
 # Simple declaration with colon
 
-a:b
+property:value
 
 ==>
 
-Properties(Declaration(identifier,value))
+Properties(Declaration)
+
+
+# Simple declaration with colon with spaces
+
+property:value
+
+==>
+
+Properties(Declaration)
 
